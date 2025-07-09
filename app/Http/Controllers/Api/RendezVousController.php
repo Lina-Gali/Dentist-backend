@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\RendezVous;
-
+use Illuminate\Support\Carbon;
 class RendezVousController extends Controller
 {
     /**
@@ -86,5 +86,13 @@ class RendezVousController extends Controller
         $rendezVous->delete();
 
         return response()->json(['message' => 'RendezVous deleted successfully']);
+    }
+    public function aujourdhui()
+    {
+        $aujourdhui = Carbon::today()->toDateString(); 
+
+        $rendezVous = RendezVous::whereDate('date_heure', $aujourdhui)->get();
+
+        return response()->json($rendezVous);
     }
 }

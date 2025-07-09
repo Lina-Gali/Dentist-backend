@@ -17,4 +17,9 @@ class RendezVous extends Model
     {
         return $this->belongsTo((Patient::class));
     }
+    public function dentiste()
+    {
+        return $this->belongsTo(Dentiste::class);
+
+    }
 }

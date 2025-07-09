@@ -11,13 +11,14 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::prefix('patients')->group(function () {
-    Route::get('/', [PatientController::class, 'index']);       
-    Route::post('/', [PatientController::class, 'store']);      
-    Route::get('{id}', [PatientController::class, 'show']);     
-    Route::put('{id}', [PatientController::class, 'update']);   
-    Route::delete('{id}', [PatientController::class, 'destroy']); 
+    Route::get('/', [PatientController::class, 'index']);
+    Route::post('/', [PatientController::class, 'store']);
+    Route::get('{id}', [PatientController::class, 'show']);
+    Route::put('{id}', [PatientController::class, 'update']);
+    Route::delete('{id}', [PatientController::class, 'destroy']);
 });
 Route::prefix('rendezvous')->group(function () {
+    Route::get('/aujourdhui', [RendezVousController::class, 'aujourdhui']);
     Route::get('/', [RendezVousController::class, 'index']);
     Route::post('/', [RendezVousController::class, 'store']);
     Route::get('{id}', [RendezVousController::class, 'show']);
